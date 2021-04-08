@@ -26,4 +26,138 @@
 ![Pipeline](./bioexpress_pipeline.png)
   
   
+*****************  
+### USAGE  
+### removeRead.R   
+~~~
+Usage: removeRead.R [options]
+
+
+Options:
+	--bed=CHARACTER
+		bed file of tRNAs [default = Hsapi38.tRNAscan_pre-tRNAs.bed12]
+
+	--bam=CHARACTER
+		premapped bam file
+
+	--fastq=CHARACTER
+		trimmed fastq file
+
+	-o CHARACTER, --output=CHARACTER
+		output file name [default= mature.fastq]
+
+	-h, --help
+		Show this help message and exit
+~~~   
+ 
+### stat_edge.R
+~~~
+Usage: stat_edge.R [options]
+
+
+Options:
+	--control=CHARACTER
+		The directory contained the readcount table of the control group
+
+	--test=CHARACTER
+		The directory contained the readcount table of the test group
+
+	--stat=CHARACTER
+		The method of statistical analysis.
+               This must be one of the stringss (Exact, Quasi-likelihood, likelihood) 
+
+	--adj=CHARACTER
+		The adjust method of statistical analysis.
+               This must be one of the strings (holm, hochberg, hommel, bonferroni, BH, BY, fdr, none) [default= BH]
+
+	-o CHARACTER, --output=CHARACTER
+		The output file name [default= output.txt]
+
+	-h, --help
+		Show this help message and exit
+~~~   
+
+### volcano.R   
+~~~
+Usage: volcano.R [options]
+
+
+Options:
+	--input=CHARACTER
+		The output matrix of statistical analysis [default= individual.tRNA.output.txt]
+
+	--pvalue=NUMERIC
+		p.value threshold for statistical significance
+
+	--foldchange=NUMERIC
+		foldchange threshold for statistical significance
+
+	-o CHARACTER, --output=CHARACTER
+		The output file name [default= output.png]
+
+	--width=NUMERIC
+		The value of width(px) [default= 800]
+
+	--height=NUMERIC
+		The value of height(px) [default= 500]
+
+	-h, --help
+		Show this help message and exit
+~~~   
+
+### barplot.R
+~~~ 
+Usage: barplot.R [options]
+
+
+Options:
+	--input=CHARACTER
+		The output matrix of statistical analysis [default= isodecoders.output.txt]
+
+	--pvalue=NUMERIC
+		p.value threshold for statistical significance
+
+	--foldchange=NUMERIC
+		foldchange threshold for statistical significance
+
+	-o CHARACTER, --output=CHARACTER
+		The output file name [default= output.png]
+
+	--width=NUMERIC
+		The value of width(px) [default= 800]
+
+	--height=NUMERIC
+		The value of height(px) [default= 500]
+
+	-h, --help
+		Show this help message and exit
+  ~~~
   
+### pyramid.R   
+~~~
+Usage: pyramid.R [options]
+
+
+Options:
+	 --input=CHARACTER
+		 The output matrix of statistical analysis [default= isoacceptor.output.txt]
+
+	 --pvalue=NUMERIC
+		 p.value threshold for statistical significance
+
+	 --foldchange=NUMERIC
+		 foldchange threshold for statistical significance
+
+	 -o CHARACTER, --output=CHARACTER
+		 The output file name [default= output.png]
+
+	 --width=NUMERIC
+		 The value of width(px) [default= 800]
+
+	 --height=NUMERIC
+		 The value of height(px) [default= 500]
+
+	 -h, --help
+		 Show this help message and exit
+~~~
+
