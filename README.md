@@ -50,9 +50,9 @@ Options:
 		Show this help message and exit
 ~~~   
  
-### stat_edge.R
+### DEtRNA.R
 ~~~
-Usage: stat_edge.R [options]
+Usage: DEtRNA.R [options]
 
 
 Options:
@@ -70,83 +70,20 @@ Options:
 		The adjust method of statistical analysis.
                This must be one of the strings (holm, hochberg, hommel, bonferroni, BH, BY, fdr, none) [default= BH]
 
-	-o CHARACTER, --output=CHARACTER
-		The output file name [default= output.txt]
-
-	-h, --help
-		Show this help message and exit
-~~~   
-
-### volcano.R   
-~~~
-Usage: volcano.R [options]
-
-
-Options:
-	--input=CHARACTER
-		The output matrix of statistical analysis [default= individual.tRNA.output.txt]
-
 	--pvalue=NUMERIC
 		p.value threshold for statistical significance
 
 	--foldchange=NUMERIC
 		foldchange threshold for statistical significance
 
-	-o CHARACTER, --output=CHARACTER
-		The output file name [default= output.png]
-
-	--width=NUMERIC
-		The value of width(px) [default= 800]
-
-	--height=NUMERIC
-		The value of height(px) [default= 500]
+	--prefix=CHARACTER
+		The output file name [default= sample01]
 
 	-h, --help
 		Show this help message and exit
+
+
 ~~~   
-
-### barplot.R
-~~~ 
-Usage: barplot.R [options]
-
-
-Options:
-	--input=CHARACTER
-		The output matrix of statistical analysis [default= isodecoders.output.txt]
-
-	--pvalue=NUMERIC
-		p.value threshold for statistical significance
-
-	--foldchange=NUMERIC
-		foldchange threshold for statistical significance
-
-	-o CHARACTER, --output=CHARACTER
-		The output file name [default= output.png]
-
-	--width=NUMERIC
-		The value of width(px) [default= 800]
-
-	--height=NUMERIC
-		The value of height(px) [default= 500]
-
-	-h, --help
-		Show this help message and exit
-  ~~~
-  
-### pyramid.R   
-~~~
-Usage: pyramid.R [options]
-
-
-Options:
-	 --input=CHARACTER
-		 The output matrix of statistical analysis [default= isoacceptor.output.txt]
-
-	 --pvalue=NUMERIC
-		 p.value threshold for statistical significance
-
-	 --foldchange=NUMERIC
-		 foldchange threshold for statistical significance
 
 	 -o CHARACTER, --output=CHARACTER
 		 The output file name [default= output.png]
