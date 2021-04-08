@@ -81,20 +81,4 @@ Options:
 
 	-h, --help
 		Show this help message and exit
-
-
-~~~   
-
-	 -o CHARACTER, --output=CHARACTER
-		 The output file name [default= output.png]
-
-	 --width=NUMERIC
-		 The value of width(px) [default= 800]
-
-	 --height=NUMERIC
-		 The value of height(px) [default= 500]
-
-	 -h, --help
-		 Show this help message and exit
-~~~
-
+~
