@@ -76,5 +76,5 @@ Options:
 		The output file name [default= sample01]
 
 	-h, --help
-		Show this help message and exit
-~
+		Show this help message and exit   
+~~~
