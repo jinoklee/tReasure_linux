@@ -116,7 +116,7 @@ len$reflen <- as.numeric(len$reflen)
   
   # filter function
   fun <- function(x){
-    tid <- gsub("\\s.*","" ,data.frame(id(x))[,1])
+    tid <- gsub("\\s.*","" ,data.frame(ShortRead::id(x))[,1])
     x[tid%in%df$qname]
   }
   
