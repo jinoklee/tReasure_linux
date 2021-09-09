@@ -26,7 +26,7 @@
 ### USAGE  
 ### removeRead.R   
 ~~~
-Usage: removeRead.R [options]
+Usage: Rscript removeRead.R [options]
 	Rscript removeRead.R --bed Hsapi38.tRNAscan_pre-tRNAs.bed12 \
 			     --bamdir ${path}/firstmapping \
 			     --fastqdir ${path}/trimmed_fastq \
