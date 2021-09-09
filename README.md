@@ -27,20 +27,24 @@
 ### removeRead.R   
 ~~~
 Usage: removeRead.R [options]
+	Rscript removeRead.R --bed Hsapi38.tRNAscan_pre-tRNAs.bed12 \
+			     --bamdir ${path}/firstmapping \
+			     --fastqdir ${path}/trimmed_fastq \
+			     --outdir ${path}/removed_read 
 
 
 Options:
 	--bed=CHARACTER
-		bed file of tRNAs [default = Hsapi38.tRNAscan_pre-tRNAs.bed12]
+		bed file of tRNAs
 
-	--bam=CHARACTER
-		premapped bam file
+	--bamdir=CHARACTER
+		directory of premapped bam files
 
-	--fastq=CHARACTER
-		trimmed fastq file
+	--fastqdir=CHARACTER
+		directory trimmed fastq files
 
-	-o CHARACTER, --output=CHARACTER
-		output file name [default= mature.fastq]
+	--outdir=CHARACTER
+		directory output files
 
 	-h, --help
 		Show this help message and exit
