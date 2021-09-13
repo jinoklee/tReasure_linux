@@ -57,10 +57,10 @@ Usage: DEtRNA.R [options]
 
 Options:
 	--control=CHARACTER
-		The directory contained the readcount table of the control group
+		directory contained the readcount table of the control group
 
 	--test=CHARACTER
-		The directory contained the readcount table of the test group
+		directory contained the readcount table of the test group
 
 	--stat=CHARACTER
 		The method of statistical analysis.
@@ -68,7 +68,7 @@ Options:
 
 	--adj=CHARACTER
 		The adjust method of statistical analysis.
-               This must be one of the strings (holm, hochberg, hommel, bonferroni, BH, BY, fdr, none) [default= BH]
+               This must be one of the strings (holm, hochberg, hommel, bonferroni, BH, BY, fdr, none)
 
 	--pvalue=NUMERIC
 		p.value threshold for statistical significance
@@ -77,7 +77,7 @@ Options:
 		foldchange threshold for statistical significance
 
 	--prefix=CHARACTER
-		The output file name [default= sample01]
+		The output file name
 
 	-h, --help
 		Show this help message and exit   
