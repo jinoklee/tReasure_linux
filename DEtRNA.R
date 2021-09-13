@@ -19,8 +19,8 @@ option_list <- list(
               help="p.value threshold for statistical significance", metavar="numeric"),
   make_option(c("--foldchange"), type="character", default=NULL, 
               help="foldchange threshold for statistical significance", metavar="numeric"),
-  make_option(c("-pre","--prefix"), type="character", default=NULL, 
-              help="The output file name [default= %default]", metavar="character")
+  make_option(c("--prefix"), type="character", default=NULL, 
+              help="The output file name ", metavar="character")
 );
 
 
@@ -49,11 +49,6 @@ if (is.null(opt$adj)){
 }
 
 
-if (is.null(opt$input)){
-  print_help(opt_parser)
-  stop("Argument must be supplied input file", call.=FALSE)
-}
-
 if (is.null(opt$pvalue)){
   print_help(opt_parser)
   stop("Argument must be supplied the threshold of p.value", call.=FALSE)
@@ -72,12 +67,11 @@ adj <- opt$adj
 pval <- as.numeric(opt$pvalue)
 fc <- as.numeric(opt$foldchange)
 prefix <- as.character(opt$prefix)
-width <- as.character(opt$width)
-height <- as.character(opt$height)
 
 library(dplyr)
 library(ggplot2)
 library(edgeR)
+library(plotrix)
 
 ### combined count matrix 
 combine.df <- function(path){
@@ -182,7 +176,8 @@ write.table(astat$table, paste0(prefix, ".isoacceptor.txt"), sep = "\t", quote =
 detRNA <- tstat$table
 
 detRNA <- mutate(detRNA, sig=ifelse(detRNA$FDR<=pval & detRNA$logFC<=-fc , "Down.sig", ifelse(detRNA$FDR<=pval & detRNA$logFC>=fc,"Up.sig", "Not.sig")))
-png(outfile)
+outfile <- paste0(prefix, ".volcanoplot.png")
+png(outfile, width = 500, height = 500)
 ggplot(detRNA, aes(x = logFC, y = -log10(FDR)))+
   geom_point(aes(col=sig)) +
   xlab(" log2 Fold Change") +
@@ -280,7 +275,8 @@ b2_data <- base_data%>%
 
 b2_data<- b2_data[!grepl("^a", b2_data$codon),]
 
-png(outfile)
+outfile <- paste0(prefix, ".barplot.png")
+png(outfile, width = 1000, height = 500)
 p <- ggplot(c, aes(x=codon, y=Freq, fill=Group))+
   geom_bar( stat="identity")+
   scale_fill_manual(values=c("Up_DEtRNA"="tomato", "Down_DEtRNA"="#67A9CF", "Non_DEtRNA"="grey89", filter="white"), breaks = c("Up_DEtRNA","Down_DEtRNA","Non_DEtRNA"))+
@@ -324,10 +320,9 @@ if(nrow(dw)==0){
   }
 
 geneplot <- full_join(dw, up)
-png(outfile)
+outfile <- paste0(prefix, ".pyramidplot.png")
+png(outfile, width = 500, height = 500)
 pyramid.plot(geneplot$Down_DEtRNA, geneplot$Up_DEtRNA,labels= geneplot$Var1,lxcol="#67A9CF", rxcol="#EF8A62",unit = "Freqency",gap=0.3, space=0.15, top.labels = c("Down_DEtRNAs", "tRNA-AA","Up_DEtRNAs"),laxlab=c(0,1,2,3), raxlab=c(0,1,2,3))
 dev.off()
-
-
 
 
