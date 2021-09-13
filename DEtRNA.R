@@ -5,9 +5,9 @@ library(optparse)
 
 option_list <- list(
   make_option(opt_str="--control", type="character", default=NULL, 
-              help="The directory contained the readcount table of the control group", metavar="character"),
+              help="directory contained the readcount table of the control group", metavar="character"),
   make_option("--test", type="character", default=NULL,
-              help="The directory contained the readcount table of the test group", metavar="character"),
+              help="directory contained the readcount table of the test group", metavar="character"),
   make_option("--stat", type="character", default=NULL,
               help="The method of statistical analysis.
                This must be one of the stringss (Exact, Quasi-likelihood, likelihood) ", metavar="character"),
@@ -19,7 +19,7 @@ option_list <- list(
               help="p.value threshold for statistical significance", metavar="numeric"),
   make_option(c("--foldchange"), type="character", default=NULL, 
               help="foldchange threshold for statistical significance", metavar="numeric"),
-  make_option(c("-pre","--prefix"), type="character", default="output.png", 
+  make_option(c("-pre","--prefix"), type="character", default=NULL, 
               help="The output file name [default= %default]", metavar="character")
 );
 
