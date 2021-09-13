@@ -53,6 +53,12 @@ Options:
 ### DEtRNA.R
 ~~~
 Usage: DEtRNA.R [options]
+	Rscript DEtRNA.R --control ./controlDir/ --test ./testDir/ \
+			--stat Exact \
+			--adj BH \
+			--pvalue 0.05 \
+			--foldchange 1 \
+			--prefix stat
 
 
 Options:
