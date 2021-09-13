@@ -11,9 +11,9 @@ option_list <- list(
   make_option("--stat", type="character", default=NULL,
               help="The method of statistical analysis.
                This must be one of the stringss (Exact, Quasi-likelihood, likelihood) ", metavar="character"),
-  make_option("--adj", type="character", default="BH",
+  make_option("--adj", type="character", default=NULL,
               help="The adjust method of statistical analysis.
-               This must be one of the strings (holm, hochberg, hommel, bonferroni, BH, BY, fdr, none) [default= %default]",
+               This must be one of the strings (holm, hochberg, hommel, bonferroni, BH, BY, fdr, none)",
               metavar="character"),
   make_option(c("--pvalue"), type="character", default=NULL, 
               help="p.value threshold for statistical significance", metavar="numeric"),
