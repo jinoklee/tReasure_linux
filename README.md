@@ -1,8 +1,8 @@
 # CLOSHA  
 
 ### 새롭게 등록해야할 프로그램  
-  * removeRead.R  
-  * DEtRNA.R
+  * removeNontRNA.R  
+  * DEtRNA_edge.R
 
 ### R 코드 실행시 필요 library  
 ~~~   
@@ -26,8 +26,8 @@
 ### USAGE  
 ### removeRead.R   
 ~~~
-Usage: Rscript removeRead.R [options]
-	Rscript removeRead.R --bed Hsapi38.tRNAscan_pre-tRNAs.bed12 \
+Usage: Rscript removeNontRNA.R [options]
+	Rscript removeNontRNA.R --bed Hsapi38.tRNAscan_pre-tRNAs.bed12 \
 			     --bamdir ${path}/firstmapping \
 			     --fastqdir ${path}/trimmed_fastq \
 			     --outdir ${path}/removed_read 
@@ -38,7 +38,7 @@ Options:
 		bed file of tRNAs
 
 	--bamdir=CHARACTER
-		directory of premapped bam files
+		directory of 1st round mapped bam files
 
 	--fastqdir=CHARACTER
 		directory trimmed fastq files
@@ -52,8 +52,8 @@ Options:
  
 ### DEtRNA.R
 ~~~
-Usage: DEtRNA.R [options]
-	Rscript DEtRNA.R --control ./controlDir/ --test ./testDir/ \
+Usage: DEtRNA_edge.R [options]
+	Rscript DEtRNA_edge.R --control ./controlDir/ --test ./testDir/ \
 			--stat Exact \
 			--adj BH \
 			--pvalue 0.05 \
