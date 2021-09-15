@@ -24,7 +24,7 @@
   
 *****************  
 ### USAGE  
-### removeRead.R   
+### removeNontRNA.R   
 ~~~
 Usage: Rscript removeNontRNA.R [options]
 	Rscript removeNontRNA.R --bed Hsapi38.tRNAscan_pre-tRNAs.bed12 \
@@ -50,7 +50,7 @@ Options:
 		Show this help message and exit
 ~~~   
  
-### DEtRNA.R
+### DEtRNA_edge.R
 ~~~
 Usage: DEtRNA_edge.R [options]
 	Rscript DEtRNA_edge.R --control ./controlDir/ --test ./testDir/ \
