@@ -69,14 +69,6 @@ fc <- as.numeric(opt$foldchange)
 prefix <- as.character(opt$prefix)
 
 
-control <- as.character("./control/")
-test <- as.character("./test/")
-stat <-"likelihood"
-adj <- "fdr"
-pval <- 0.05
-fc <- 2
-prefix <- "fdr"
-
 library(dplyr)
 library(ggplot2)
 library(edgeR)
