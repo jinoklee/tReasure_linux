@@ -16,11 +16,11 @@ option_list <- list(
                This must be one of the strings (holm, hochberg, hommel, bonferroni, BH, BY, fdr, none)",
               metavar="character"),
   make_option(c("--pvalue"), type="character", default=NULL, 
-              help="p.value threshold for statistical significance", metavar="numeric"),
+              help="p.value threshold for statistical significance (0.01, 0.05)", metavar="numeric"),
   make_option(c("--foldchange"), type="character", default=NULL, 
-              help="foldchange threshold for statistical significance", metavar="numeric"),
+              help="foldchange threshold for statistical significance (1, 1.5, 2)", metavar="numeric"),
   make_option(c("--prefix"), type="character", default=NULL, 
-              help="The output file name ", metavar="character")
+              help="The prefix output file name ", metavar="character")
 );
 
 
@@ -68,6 +68,15 @@ pval <- as.numeric(opt$pvalue)
 fc <- as.numeric(opt$foldchange)
 prefix <- as.character(opt$prefix)
 
+
+control <- as.character("./control/")
+test <- as.character("./test/")
+stat <-"likelihood"
+adj <- "fdr"
+pval <- 0.05
+fc <- 2
+prefix <- "fdr"
+
 library(dplyr)
 library(ggplot2)
 library(edgeR)
@@ -103,6 +112,7 @@ saminfo <- data.frame(samplename=c(colnames(c), colnames(t)) , group=c(rep("cont
 ### individual tRNA count matrix
 t.count <- cbind(c,t)
 rownames(t.count) <- trna
+write.table(t.count, paste0(prefix, ".rc.individualtRNAs.txt"), sep = "\t", quote = F)
 
 ### isodecoder count matrix
 count <- t.count
@@ -127,11 +137,13 @@ sum.df <- function(count){
 }
 
 d.count <- sum.df(count)
+write.table(d.count, paste0(prefix, ".rc.isodecoders.txt"), sep = "\t", quote = F)
 
 ### isoaccepotr count matrix
 count <- d.count
 count$iso <- substr(rownames(count), 1, 12)
 a.count <- sum.df(count)
+write.table(a.count, paste0(prefix, ".rc.isoacceptors.txt"), sep = "\t", quote = F)
 
 ### make design
 case <- factor(saminfo$group)
@@ -159,7 +171,7 @@ stat.out <- function(count, stat, adj){
     fit <- glmFit(y, design)
     test <- glmLRT(fit, coef=coef)
   }
-  topTags(test, n = Inf, adjust.method=adj)
+  return(topTags(test, n = Inf, adjust.method=adj))
 }
 
 tstat <- stat.out(t.count, stat,adj)
@@ -167,9 +179,9 @@ dstat <- stat.out(d.count,stat,adj)
 astat <- stat.out(a.count,stat,adj) 
 
 
-write.table(tstat$table, paste0(prefix, ".individual.tRNA.txt"), sep = "\t", quote = F)
-write.table(dstat$table, paste0(prefix, ".isodecoders.txt"), sep = "\t", quote = F)
-write.table(astat$table, paste0(prefix, ".isoacceptor.txt"), sep = "\t", quote = F)
+write.table(tstat$table, paste0(prefix, ".stat.individualtRNAs.txt"), sep = "\t", quote = F)
+write.table(dstat$table, paste0(prefix, ".stat.isodecoders.txt"), sep = "\t", quote = F)
+write.table(astat$table, paste0(prefix, ".stat.isoacceptor.txt"), sep = "\t", quote = F)
 
 #1.Volcano
 
@@ -324,5 +336,3 @@ outfile <- paste0(prefix, ".pyramidplot.png")
 png(outfile, width = 500, height = 500)
 pyramid.plot(geneplot$Down_DEtRNA, geneplot$Up_DEtRNA,labels= geneplot$Var1,lxcol="#67A9CF", rxcol="#EF8A62",unit = "Freqency",gap=0.3, space=0.15, top.labels = c("Down_DEtRNAs", "tRNA-AA","Up_DEtRNAs"),laxlab=c(0,1,2,3), raxlab=c(0,1,2,3))
 dev.off()
-
-
