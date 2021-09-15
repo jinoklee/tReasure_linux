@@ -7,7 +7,7 @@ option_list <- list(
   make_option(c("--bed"), type="character", default=NULL,
              help="bed file of tRNAs", metavar="character"),
   make_option(c("--bamdir"), type="character", default=NULL,
-              help="directory of premapped bam files", metavar="character"),
+              help="directory of 1st round mapped bam files", metavar="character"),
   make_option(c("--fastqdir"), type="character", default=NULL,
              help="directory trimmed fastq files", metavar="character"),
   make_option(c("--outdir"), type="character", default=NULL,
