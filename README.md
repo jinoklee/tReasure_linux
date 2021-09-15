@@ -58,7 +58,7 @@ Usage: DEtRNA.R [options]
 			--adj BH \
 			--pvalue 0.05 \
 			--foldchange 1 \
-			--prefix stat
+			--prefix BH
 
 
 Options:
@@ -77,13 +77,13 @@ Options:
                This must be one of the strings (holm, hochberg, hommel, bonferroni, BH, BY, fdr, none)
 
 	--pvalue=NUMERIC
-		p.value threshold for statistical significance
+		p.value threshold for statistical significance (0.01, 0.05)
 
 	--foldchange=NUMERIC
-		foldchange threshold for statistical significance
+		foldchange threshold for statistical significance (1, 1.5, 2)
 
 	--prefix=CHARACTER
-		The output file name
+		The prefix output file name
 
 	-h, --help
 		Show this help message and exit   
