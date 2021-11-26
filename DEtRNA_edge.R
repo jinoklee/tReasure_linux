@@ -186,8 +186,8 @@ ggplot(detRNA, aes(x = logFC, y = -log10(FDR)))+
   geom_point(aes(col=sig)) +
   xlab(" log2 Fold Change") +
   ylab("-log10 Adjusted P value ") +
-  geom_vline(xintercept = c(-1.5,1.5),col = "red",linetype = "dotted",size = 0.5) +
-  geom_hline(yintercept = c(-log10(0.05)),col = "red", linetype = "dotted",size = 0.5) +
+  geom_vline(xintercept = c(-fc,fc),col = "red",linetype = "dotted",size = 0.5) +
+  geom_hline(yintercept = c(-log10(pval)),col = "red", linetype = "dotted",size = 0.5) +
   theme_bw() +
   theme(legend.position = "none")+
   scale_colour_manual(values = c("Not.sig"="grey", "Up.sig"="tomato","Down.sig"="#67A9CF"))
