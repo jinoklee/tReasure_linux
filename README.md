@@ -21,3 +21,7 @@
   library(plotrix)   
 ~~~
 
+### run script
+~~~
+ tReasure_linux.sh
+~~~
