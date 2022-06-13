@@ -1,8 +1,5 @@
-# CLOSHA  
+# Method
 
-### 새롭게 등록해야할 프로그램  
-  * removeNontRNA.R  
-  * DEtRNA_edge.R
 
 ### R 코드 실행시 필요 library  
 ~~~   
