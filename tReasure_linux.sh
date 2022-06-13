@@ -81,7 +81,7 @@ outDir=/results # results (from trim to rc.txt)
 	do
 		bi=$(basename ${i} .mature.fastq)
 		echo ${bi}
-		(${bowtie} -v 3--best -p 15 ${genomeDir}/bowtie/${genomeName}.tRNAscan_mature ${outDir}/remove/${bi}.mature.fastq -S ${outDir}/smapping/${bi}.sam) 2> ${log}/${bi}.smapping.log
+		(${bowtie} -v 3 --best -p 15 ${genomeDir}/bowtie/${genomeName}.tRNAscan_mature ${outDir}/remove/${bi}.mature.fastq -S ${outDir}/smapping/${bi}.sam) 2> ${log}/${bi}.smapping.log
 		(samtools view -bS ${outDir}/smapping/${bi}.sam | samtools sort -@ 2 > ${bi}.bam) 2>> ${log}/${bi}.samtools.log
 	       samtools index ${bi}.bam
 	       rm ${bi}.sam
