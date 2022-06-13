@@ -21,7 +21,7 @@
   library(plotrix)   
 ~~~
 
-### run script
+### run script after change variables and paths
 ~~~
  tReasure_linux.sh
 ~~~
