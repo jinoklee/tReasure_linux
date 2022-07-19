@@ -3,7 +3,7 @@
 #####################################################################################################
 #change here variable and paths
 #####################################################################################################
-genomeName=Hsapi38 # https://treasure.pmrc.re.kr/data/genome/Eukarya/Hsapi38/Hsapi38.zip
+genomeName=Hsapi38 # https://treasure.pmrc.re.kr/data/genome/Hsapi38/Hsapi38.tar.gz
 
 # reference path
 genomeDir=/refer/${genomeName}
