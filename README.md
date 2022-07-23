@@ -26,7 +26,7 @@
   sh tReasure_linux.sh
 ~~~
 
-### Statisic analysis  for differentially expressed tRNA using EdgeR  
+### Statisic analysis  for differentially expressed tRNAs using EdgeR  
 * before run "DEtRNA_dege.R", move readcount files to each groups.
    * move **control sample.expression.txt files** to **[resultsPATH]/control** directory
    * move **test sample.expression.txt" files** to **[resultsPATH]/test** directory
