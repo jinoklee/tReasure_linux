@@ -105,3 +105,13 @@ outDir=/results # results (from trim to rc.txt)
  mkdir -p ${outDir}/control
  mkdir -p ${outDir}/test
  mkdir -p ${outDir}/statistics
+
+
+######################################################################################################
+# before run "DEtRNA_dege.R", move readcount files to each groups. 
+# mv  ${outDir}/rc/*.expression.txt  ${outDir}/control
+# mv  ${outDir}/rc/*.expression.txt  ${outDir}/test
+######################################################################################################
+ 
+# cd ${outDir}/statistics
+# Rscript ${script}/DEtRNA_edge.R --control ${outDir}/control --test  ${outDir}/test  --stat Exact --adj BH -pvalue 0.05  --foldchange 1 --prefix BH
