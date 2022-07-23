@@ -12,7 +12,6 @@ genomeDir=/refer/${genomeName}
 
 # tool path
 tool="/home/tools"
-#cutadapt
 bowtie="${tool}/bowtie-1.3.0-linux-x86_64/bowtie"
 cutadapt="${tool}/cutadapt"
 samtools="${tool}/samtools"		
@@ -43,7 +42,7 @@ outDir=/results # results (from trim to rc.txt)
 	do
 		bi=$(basename $i .fastq)
 		echo ${bi}
-		cutadapt -m 10 -M 50 -q 25 -a TGGAATTCTCGGGTGCCAAGG -o ${outDir}/trim/${bi}_trimmed.fastq ${ngsDir}/${bi}.fastq 
+		${cutadapt} -m 10 -M 50 -q 25 -a TGGAATTCTCGGGTGCCAAGG -o ${outDir}/trim/${bi}_trimmed.fastq ${ngsDir}/${bi}.fastq 
 
 	done
 
@@ -60,8 +59,8 @@ outDir=/results # results (from trim to rc.txt)
 		bi=$(basename ${i} _trimmed.fastq)
 		echo ${bi}
 		(${bowtie}  -v 3 --best -p 15 ${genomeDir}/bowtie/${genomeName}  ${outDir}/trim/${bi}_trimmed.fastq -S ${outDir}/fmapping/${bi}.sam) 2> ${log}/${bi}.fmapping.log
-		(samtools view -bS ${outDir}/fmapping/${bi}.sam | samtools sort -@ 2 > ${bi}.bam) 2>> ${log}/${bi}.samtools.log
-		samtools index ${bi}.bam
+		(${samtools} view -bS ${outDir}/fmapping/${bi}.sam | samtools sort -@ 2 > ${bi}.bam) 2>> ${log}/${bi}.samtools.log
+		${samtools} index ${bi}.bam
 		rm ${bi}.sam
 	done
 
@@ -84,8 +83,8 @@ outDir=/results # results (from trim to rc.txt)
 		bi=$(basename ${i} .mature.fastq)
 		echo ${bi}
 		(${bowtie} -v 3 --best -p 15 ${genomeDir}/bowtie/${genomeName}.tRNAscan_mature ${outDir}/remove/${bi}.mature.fastq -S ${outDir}/smapping/${bi}.sam) 2> ${log}/${bi}.smapping.log
-		(samtools view -bS ${outDir}/smapping/${bi}.sam | samtools sort -@ 2 > ${bi}.bam) 2>> ${log}/${bi}.samtools.log
-	       samtools index ${bi}.bam
+		(${samtools} view -bS ${outDir}/smapping/${bi}.sam | samtools sort -@ 2 > ${bi}.bam) 2>> ${log}/${bi}.samtools.log
+	       ${samtools} index ${bi}.bam
 	       rm ${bi}.sam
        done
 
@@ -99,18 +98,10 @@ outDir=/results # results (from trim to rc.txt)
 	do
 		bi=$(basename ${i} .bam)
 		echo ${bi}
-		samtools idxstats ${bi}.bam > ${outDir}/rc/${bi}.expression.txt
+		${samtools} idxstats ${bi}.bam > ${outDir}/rc/${bi}.expression.txt
 	done
 
 # 6. statistics using edgeR 
  mkdir -p ${outDir}/control
  mkdir -p ${outDir}/test
  mkdir -p ${outDir}/statistics
-
-# move readcount files to each groups. 
-# mv  ${outDir}/rc/*.expression.txt  ${outDir}/control
-# mv  ${outDir}/rc/*.expression.txt  ${outDir}/test
-
- cd ${outDir}/statistics
-
- Rscript ${script}/DEtRNA_edge.R --control ${outDir}/control --test  ${outDir}/test  --stat Exact --adj BH -pvalue 0.05  --foldchange 1 --prefix BH
