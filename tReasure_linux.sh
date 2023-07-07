@@ -68,7 +68,7 @@ outDir=/results # results (from trim to rc.txt)
 	
 	mkdir ${outDir}/remove
 
- 	Rscript ${script}/removeNontRNA.R --bed ${genomeDir}/${genoneName}.tRNAscan_pre-tRNAs.bed12 --bamdir ${outDir}/fmapping --fastqdir ${outDir}/trim  --outdir ${outDir}/remove
+ 	Rscript ${script}/removeNontRNA.R --bed ${genomeDir}/${genomeName}.tRNAscan_pre-tRNAs.bed12 --bamdir ${outDir}/fmapping --fastqdir ${outDir}/trim  --outdir ${outDir}/remove
 
 
 # 4. 2nd round mapping using bowtie
